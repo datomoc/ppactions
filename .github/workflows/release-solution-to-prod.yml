@@ -36,7 +36,8 @@ env:
   BUILD_ENVIRONMENT_URL: https://org6c5b47c3.crm4.dynamics.com
   PRODUCTION_ENVIRONMENT_URL: https://org7bead4ea.crm4.dynamics.com
   USERNAME: admin@CRM674698.onmicrosoft.com
-  
+
+
 jobs:
   convert-to-managed:
     runs-on: windows-latest
@@ -66,7 +67,7 @@ jobs:
         publish-changes: true
 
     - name: Export solution as managed
-      uses: microsoft/powerplatform-actions/export-solution@v0
+      uses: microsoft/powerplatform-actions/export-solution@0.4.0
       with:
         environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
         user-name: ${{env.USERNAME}}
@@ -99,7 +100,7 @@ jobs:
         path: out/release/
 
     - name: Import solution to prod env
-      uses: microsoft/powerplatform-actions/import-solution@v0
+      uses: microsoft/powerplatform-actions/import-solution@0.4.0
       with:
         environment-url: ${{env.PRODUCTION_ENVIRONMENT_URL}}
         user-name: ${{env.USERNAME}}
